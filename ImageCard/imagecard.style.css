@@ -1,0 +1,13 @@
+.card{
+   
+   display: flex;
+   justify-content: space-between;
+   padding:0 5px;
+   float: left;
+   margin:1.66%;
+ 
+   cursor: pointer;
+    text-decoration: none;
+  
+}
+

@@ -1,0 +1,49 @@
+  
+   .outer {
+           width: 1000px;
+           height: 600px;
+           
+           display: inline-flex;
+           background-color:#696969;
+           
+           margin-left:35px;
+           margin-top:5px;
+           justify-content: center;
+                       }
+    .middle {
+           background-color:white;
+          border-radius: 10px;
+           width: 800px;
+           height: 500px;
+           display: inline-grid;
+           align-items: center;
+           justify-content:center;
+           
+           margin: auto;
+           
+
+            }
+     .inner{
+        width: 400px;
+        height: 300px;
+        display:block;
+        margin:auto;
+        margin-top:50px;
+        background-color:white;
+        
+
+}
+.button{
+  border-radius:20px;
+  background-color: #20B2AA;
+  color: white;
+  border: none;
+  height:300;
+  width:300px;
+  margin: auto;
+  display: block;
+   text-align: center;
+  
+
+  
+}
