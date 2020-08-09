@@ -1,25 +1,20 @@
 import React from 'react'
+import React, { useState, useCallback } from "react";
 import axios from 'axios'
+import _ from "lodash";
 
-class SearchBar extends React.Component{
-  handleChange = (e) =>{
-     const { value } = e.target;
-    this.setState({
-      query: value
-    });
-
-    this.search(value);
-  }
-  search = query => {
-    let newImageList=[]
-    if(query!=''){
-       const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=UINkUp2tHWMDhmdNjUCJelw1Xp4-_yT6lGfMmsbItvY`
+const SearchBar = (props) => {
+  const sendQuery = query => {
+    let newList=[]
+    if(query!==''){
+      
+       const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=yc1BDCwSLt7rd1GK4AwxLshmLYbpEzNyR66Tbrw2nx8`
       
 
         axios.get(url).then(response=>{
           const list = response.data
-          newImageList =  list.results
-          this.props.handleState(list.results)
+          newList=list.results
+          props.handleState(newList)
          })
     .catch((error)=>{
       console.log('error')
@@ -27,17 +22,21 @@ class SearchBar extends React.Component{
     })
     }
     else{
-      this.props.handleState(this.props.imageList)
+      this.props.handleState(props.imageList)
     }
-    
-   
   };
-  render(){
-    return (
-       <input type="text"
-              className="input"
-              onChange={this.handleChange} placeholder="Search..." />
-    )
-  }
+
+  const [userQuery, setUserQuery] = useState("");
+  const delayedQuery = useCallback(_.debounce(q => sendQuery(q), 2000), []);
+  const onChange = e => {
+    setUserQuery(e.target.value);
+    delayedQuery(e.target.value);
+  };
+  return(
+     <div>
+      <label>Search Fixed:</label>
+      <input onChange={onChange} value={userQuery} />
+    </div>
+  )
 }
 export default SearchBar

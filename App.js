@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div>
-         <Route exact path='/home/:id' component={ImageView}/>
+        <Route exact path='/home/:id' component={ImageView}/>
         <Route exact path='/home' component={Home}/>
         <Route exact path="/">
     <Redirect to="/home" />
